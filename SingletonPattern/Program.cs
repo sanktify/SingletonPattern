@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace SingletonPattern
 {
@@ -6,8 +7,23 @@ namespace SingletonPattern
     {
         static void Main(string[] args)
         {
-            Singleton obj = Singleton.Instance;
-            obj.DisplayValues("this is from Program class");
+            Parallel.Invoke(
+               () => PrintStudentDetails(), 
+                () => PrintEmployeeDetails()
+                );
+            Console.ReadLine();
+        }
+
+        private static void PrintStudentDetails()
+        {
+            Singleton sobj = Singleton.Instance;
+            sobj.DisplayValues("this is from Student class");
+        }
+
+        private static void PrintEmployeeDetails()
+        {
+            Singleton eobj = Singleton.Instance;
+            eobj.DisplayValues("this is from Employee class");
         }
     }
 }
