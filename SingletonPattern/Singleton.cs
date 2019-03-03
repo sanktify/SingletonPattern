@@ -1,7 +1,7 @@
 ﻿using System;
 namespace SingletonPattern
 {
-    public class Singleton
+    public sealed class Singleton
     {
         private static Singleton instance;
         private Singleton()
